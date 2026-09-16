@@ -57,7 +57,7 @@ La topologie ci-dessous présente l’environnement utilisé pour tester la comm
 
 ![Topologie réseau sous GNS3](topologie-gns3-radius.png)
 
-### 4. Configuration AAA, RADIUS et IEEE 802.1X
+### 2. Configuration AAA, RADIUS et IEEE 802.1X
 
 Le modèle **AAA (Authentication, Authorization and Accounting)** a été configuré sur le commutateur afin de centraliser l’authentification et l’autorisation des utilisateurs via le serveur **RADIUS**.
 
@@ -73,6 +73,53 @@ La configuration réalisée comprend :
 
 > 🔒 **Sécurité :** le secret partagé RADIUS utilisé dans l’environnement original a été volontairement masqué dans cette documentation.
 
+
+### 3. Tests d’authentification et validation
+
+Afin de valider le fonctionnement de la solution, des tests d’authentification ont été réalisés avec différents utilisateurs.
+
+#### ✅ Utilisateur autorisé
+
+Les utilisateurs autorisés ont été authentifiés avec succès par le serveur RADIUS, confirmant le bon fonctionnement de l’authentification centralisée.
+
+#### ❌ Utilisateur non autorisé
+
+Un test a également été effectué avec un utilisateur ne répondant pas aux conditions d’accès définies. La demande d’authentification a été rejetée par le serveur RADIUS.
+
+![Tests d’authentification RADIUS](tests-authentification-radius.png)
+
+Ces tests permettent de vérifier que la solution distingue correctement les utilisateurs autorisés des utilisateurs non autorisés selon les politiques d’accès configurées.
+
+
+### 4. Analyse du trafic avec Wireshark
+
+Afin de vérifier les échanges entre le client RADIUS et le serveur,
+le trafic réseau a été capturé et analysé avec **Wireshark**.
+
+L’analyse met notamment en évidence les messages du protocole RADIUS :
+
+- **Access-Request** : demande d’authentification envoyée au serveur RADIUS ;
+- **Access-Accept** : authentification acceptée par le serveur ;
+- **Access-Reject** : authentification refusée par le serveur.
+
+#### Analyse des transactions RADIUS
+
+Les captures suivantes montrent la différence entre une authentification
+acceptée et une authentification rejetée.
+
+![Analyse des transactions RADIUS avec Wireshark](wireshark-radius-transactions.png)
+
+#### Analyse d’un paquet Access-Request
+
+L’inspection détaillée d’un paquet **Access-Request** permet d’observer
+les informations échangées entre le client et le serveur RADIUS lors
+d’une tentative d’authentification.
+
+![Analyse d'un Access-Request RADIUS](wireshark-access-request.png)
+
+Cette analyse confirme le fonctionnement des mécanismes
+d’authentification et permet de valider les résultats observés lors
+des tests d’accès.
 
 
 
