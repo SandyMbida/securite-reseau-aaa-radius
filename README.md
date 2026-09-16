@@ -45,20 +45,21 @@ L’objectif principal était de permettre l’authentification et l’autorisat
 ##  Architecture de la solution
 ![Architecture de la solution AAA/RADIUS](architecture-aaa-radius.png)
 
-Le système repose sur une architecture d’authentification centralisée :
+Le système repose sur une architecture d’authentification centralisée centralisée permettant de contrôler l’accès au réseau à l’aide de RADIUS, IEEE 802.1X et Active Directory :
 
-```text
-Utilisateur / Windows 10
-          │
-          │ IEEE 802.1X
-          ▼
-   Commutateur réseau
-     Client RADIUS
-          │
-          │ RADIUS
-          ▼
- Windows Server 2019
-      NPS / RADIUS
-          │
-          ▼
-   Active Directory
+## ⚙️ Mise en œuvre
+
+### 1. Création de l’environnement réseau
+
+L’environnement de test a été construit à l’aide de **GNS3** et de la virtualisation.
+
+La topologie ci-dessous présente l’environnement utilisé pour tester la communication entre le poste utilisateur, le client RADIUS et le serveur RADIUS.
+
+![Topologie réseau sous GNS3](topologie-gns3-radius.png)
+
+
+
+
+
+
+
