@@ -47,7 +47,7 @@ L’objectif principal était de permettre l’authentification et l’autorisat
 
 Le système repose sur une architecture d’authentification centralisée centralisée permettant de contrôler l’accès au réseau à l’aide de RADIUS, IEEE 802.1X et Active Directory :
 
-## ⚙️ Mise en œuvre
+##  Mise en œuvre
 
 ### 1. Création de l’environnement réseau
 
@@ -56,6 +56,22 @@ L’environnement de test a été construit à l’aide de **GNS3** et de la vir
 La topologie ci-dessous présente l’environnement utilisé pour tester la communication entre le poste utilisateur, le client RADIUS et le serveur RADIUS.
 
 ![Topologie réseau sous GNS3](topologie-gns3-radius.png)
+
+### 4. Configuration AAA, RADIUS et IEEE 802.1X
+
+Le modèle **AAA (Authentication, Authorization and Accounting)** a été configuré sur le commutateur afin de centraliser l’authentification et l’autorisation des utilisateurs via le serveur **RADIUS**.
+
+La configuration réalisée comprend :
+- l’activation du modèle AAA ;
+- l’authentification IEEE 802.1X via RADIUS ;
+- l’autorisation d’accès au réseau via RADIUS ;
+- la déclaration du serveur RADIUS ;
+- l’activation globale du protocole IEEE 802.1X ;
+- l’activation de 802.1X sur le port relié à l’utilisateur.
+
+![Configuration AAA, RADIUS et IEEE 802.1X](configuration-aaa-radius-8021x.png)
+
+> 🔒 **Sécurité :** le secret partagé RADIUS utilisé dans l’environnement original a été volontairement masqué dans cette documentation.
 
 
 
