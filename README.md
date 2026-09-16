@@ -43,6 +43,7 @@ L’objectif principal était de permettre l’authentification et l’autorisat
 ---
 
 ##  Architecture de la solution
+![Architecture de la solution AAA/RADIUS](architecture-aaa-radius.png)
 
 Le système repose sur une architecture d’authentification centralisée :
 
